@@ -8,14 +8,12 @@ export const CARD_CONFIG = {
       { name: 'Utility 10%', limit: 250, percentage: 10, keywords: ['electricity', 'gas', 'jio', 'vi'] },
       { name: 'Preferred merchant 10%', percentage: 10, limit: 500, keywords: ['big basket', 'zomato', 'swiggy'] },
     ],
-    // IMPORTANT: Define what your Excel columns are named
-    // These MUST match the headers in your Excel file
     columnMapping: {
-      date: 'Date', // or 'Transaction Date'
-      account: 'Account', // or 'Account name'
-      category: 'Category', // or 'Transaction Category'
-      subcategory: 'Subcategory', // or 'Transaction Subcategory'
-      description: 'Note', // or 'Transaction Description', 'Details'
+      date: 'Date',
+      account: 'Account',
+      category: 'Category', // Excel's category column
+      subcategory: 'Subcategory', // Excel's subcategory column
+      description: 'Note', // Used for keyword matching
       amount: 'Amount',
       transactionType: 'Income/Expense'
     }
@@ -26,11 +24,11 @@ export const CARD_CONFIG = {
       { name: 'Online', limit: 5000, percentage: 5, keywords: ['papa', 'grocery'] },
     ],
     columnMapping: {
-      date: 'Date', // or 'Transaction Date'
-      account: 'Account', // or 'Account name'
-      category: 'Category', // or 'Transaction Category'
-      subcategory: 'Subcategory', // or 'Transaction Subcategory'
-      description: 'Note', // or 'Transaction Description', 'Details'
+      date: 'Date',
+      account: 'Account',
+      category: 'Category',
+      subcategory: 'Subcategory',
+      description: 'Note',
       amount: 'Amount',
       transactionType: 'Income/Expense'
     }
@@ -43,6 +41,7 @@ export const getInitialCategorySpending = (cardId) => {
   if (!CARD_CONFIG[cardId]) return [];
   return CARD_CONFIG[cardId].categories.map(cat => ({
     ...cat,
-    spent: 0,
+    spent: 0, // This will store the cashback earned
+    contributingTransactions: [], // Initialize array to hold transaction details
   }));
 };

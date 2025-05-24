@@ -1,29 +1,34 @@
-/* src/App.css */
+/* src/App.css - Dark Theme */
 body {
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  background-color: #f4f7f6;
-  color: #333;
+  background-color: #282c34; /* Dark background for body */
+  color: #f0f0f0; /* Light default text color */
+  line-height: 1.6;
 }
 
 .App {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #3a3f47; /* Slightly lighter dark for app container */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
 }
 
 .App-header {
   text-align: center;
   margin-bottom: 30px;
-  color: #2c3e50;
+  color: #61dafb; /* Accent color for header */
 }
 
 .App-header h1 {
   margin: 0;
-  font-size: 2em;
+  font-size: 2.2em;
 }
 
 .controls {
@@ -32,47 +37,89 @@ body {
   gap: 15px;
   margin-bottom: 30px;
   padding: 20px;
-  background-color: #ecf0f1;
+  background-color: #40454f; /* Darker section for controls */
   border-radius: 5px;
+  border: 1px solid #50555f;
 }
 
 .controls label {
   font-weight: bold;
+  color: #e0e0e0;
 }
 
 .controls select,
-.controls input[type="file"],
-.controls button {
+.controls input[type="file"] {
   padding: 10px;
   border-radius: 4px;
-  border: 1px solid #bdc3c7;
+  border: 1px solid #555c66;
+  background-color: #2c3038;
+  color: #f0f0f0;
   font-size: 1em;
 }
 
+.controls input[type="file"]::-webkit-file-upload-button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.controls input[type="file"]::file-selector-button { /* Standard */
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+
 .controls button {
-  background-color: #3498db;
-  color: white;
+  padding: 12px 15px;
+  border-radius: 4px;
+  background-color: #61dafb; /* Accent button color */
+  color: #282c34; /* Dark text on light button */
+  font-weight: bold;
   cursor: pointer;
   border: none;
-  transition: background-color 0.2s;
+  font-size: 1em;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .controls button:hover {
-  background-color: #2980b9;
+  background-color: #72e6ff;
+  transform: translateY(-1px);
 }
 
 .controls button:disabled {
-  background-color: #bdc3c7;
+  background-color: #555c66;
+  color: #888;
   cursor: not-allowed;
+  transform: translateY(0);
+}
+
+.info-text {
+  font-size: 0.9em;
+  background-color: #4a505a; /* Darker info box */
+  padding: 12px;
+  border-radius: 4px;
+  border-left: 4px solid #61dafb; /* Accent border */
+  margin-bottom: 15px;
+  color: #d0d0d0;
 }
 
 .error-message {
-  color: #e74c3c;
-  background-color: #fdd;
-  padding: 10px;
+  color: #ff6b6b; /* Bright red for errors */
+  background-color: #5e3c3c;
+  padding: 12px;
   border-radius: 4px;
   margin-bottom: 20px;
   text-align: center;
+  border: 1px solid #ff6b6b;
+  font-weight: bold;
 }
 
 .results {
@@ -80,10 +127,10 @@ body {
 }
 
 .results h2 {
-  color: #2c3e50;
-  border-bottom: 2px solid #3498db;
+  color: #61dafb; /* Accent color */
+  border-bottom: 2px solid #61dafb;
   padding-bottom: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .results ul {
@@ -91,47 +138,184 @@ body {
   padding: 0;
 }
 
-.results li {
-  background-color: #f9f9f9;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid #eee;
+.category-item {
+  background-color: #40454f; /* Darker item background */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #50555f;
+  color: #e0e0e0; /* Light text for category item */
+}
+
+.category-summary {
+  margin-bottom: 15px;
+}
+.category-summary div {
+    margin-bottom: 5px; /* Spacing within summary */
 }
 
 .progress-bar-container {
   width: 100%;
-  background-color: #e0e0e0;
+  background-color: #555c66; /* Darker background for progress bar */
   border-radius: 4px;
-  height: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  overflow: hidden; /* Ensures the inner bar stays within bounds */
+  height: 22px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
   text-align: right;
-  line-height: 20px; /* Vertically center text if you add any */
+  line-height: 22px;
   color: white;
-  border-radius: 4px; /* Match container if not full */
+  border-radius: 4px;
   transition: width 0.3s ease-in-out;
+  /* background-color is set inline based on percentage */
 }
 
 .limit-reached {
   font-weight: bold;
-  color: #c0392b;
+  color: #ff8c8c; /* Lighter red for dark theme */
+  margin-left: 5px;
+}
+
+.transaction-details {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed #555c66;
+}
+
+.toggle-transactions-btn {
+  background-color: #586170;
+  color: #e0e0e0;
+  border: 1px solid #6a7383;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+  transition: background-color 0.2s;
+}
+
+.toggle-transactions-btn:hover {
+  background-color: #6a7383;
+}
+
+.transaction-list {
+  margin-top: 10px;
+  max-height: 350px;
+  overflow-y: auto;
+  border: 1px solid #50555f;
+  border-radius: 4px;
+  padding: 0; /* Remove padding if table has its own spacing */
+  background-color: #3a3f47; /* Match app background or slightly different */
+}
+
+.transaction-list table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+
+.transaction-list th,
+.transaction-list td {
+  border: 1px solid #50555f; /* Darker borders */
+  padding: 10px;
+  text-align: left;
+}
+
+.transaction-list th {
+  background-color: #4a505a; /* Header background for table */
+  color: #e0e0e0;
+  font-weight: bold;
+  position: sticky; /* Make headers stick on scroll */
+  top: 0;
+  z-index: 1;
+}
+
+.transaction-list tr:nth-child(even) td { /* Keep even row distinction subtle */
+  background-color: #40454f;
+}
+.transaction-list tr:hover td {
+  background-color: #4f5663;
+}
+
+.transaction-list .amount-column {
+  text-align: right;
 }
 
 /* Mobile Friendliness */
-@media (max-width: 600px) {
+@media (max-width: 768px) { /* Adjusted breakpoint */
   .App {
     padding: 10px;
+    margin: 10px;
   }
   .App-header h1 {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
   .controls {
     padding: 15px;
+  }
+  .transaction-list table,
+  .transaction-list thead,
+  .transaction-list tbody,
+  .transaction-list th,
+  .transaction-list td,
+  .transaction-list tr {
+    display: block;
+  }
+
+  .transaction-list thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .transaction-list tr {
+    border: 1px solid #50555f;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #40454f; /* Ensure item background for stacked view */
+  }
+
+  .transaction-list td {
+    border: none;
+    border-bottom: 1px solid #50555f; /* Separator for stacked items */
+    position: relative;
+    padding-left: 45%; /* Make space for the label */
+    padding-top: 8px;
+    padding-bottom: 8px;
+    min-height: 24px; /* Ensure enough height */
+    white-space: normal;
+    text-align: right;
+  }
+  .transaction-list td:last-child {
+      border-bottom: none;
+  }
+
+  .transaction-list td:before {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    width: 40%; /* Width of the label */
+    padding-right: 10px;
+    white-space: nowrap;
+    content: attr(data-label);
+    font-weight: bold;
+    text-align: left;
+    color: #b0b0b0; /* Label color */
+  }
+
+  .transaction-list td:nth-of-type(1):before { content: "Date"; }
+  .transaction-list td:nth-of-type(2):before { content: "Description"; }
+  .transaction-list td:nth-of-type(3):before { content: "Excel Cat."; }
+  .transaction-list td:nth-of-type(4):before { content: "Excel Subcat."; }
+  .transaction-list td:nth-of-type(5):before { content: "Amount"; }
+  .transaction-list td:nth-of-type(6):before { content: "Cashback"; }
+
+  .transaction-list .amount-column {
+    text-align: right;
   }
 }
